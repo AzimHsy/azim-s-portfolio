@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style1.css" />
+    <title>Azim's Portfolio</title>
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">nrfitriazim</a>
+
+      <nav>
+        <a href="#" class="active"> Home</a>
+        <a href="#">Services</a>
+        <a href="#">Skills</a>
+        <a href="#">Education</a>
+        <a href="#">Experience</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+    <section class="home">
+      <div class="home-img">
+        <img src="pic3.jpg" alt="" />
+      </div>
+      <div class="home-content">
+        <h1>Hi, it's <span>Nurfitri Azim</span></h1>
+        <h3 class="typing-text">
+          I am a <span id="typed-text"></span><span id="cursor">|</span>
+        </h3>
+        <p>
+          I’m a Diploma in Computer Science student with hands-on experience in
+          full-stack development and UI/UX design. I specialize in developing
+          customized websites tailored to your brand and product goals,
+          combining functionality with clean design to deliver engaging digital
+          experiences.
+        </p>
+        <div class="social-icon">
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/_fitriazimm/?hl=en"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+        </div>
+        <a href="#" class="btn">Hire me</a>
+      </div>
+    </section>
+    <script>
+      const roles = [
+        "Web Developer",
+        "Software Engineer",
+        "Web Designer",
+        "Content Creator",
+        "Video Editor",
+      ];
+      let i = 0;
+      let j = 0;
+      let currentRole = "";
+      let isDeleting = false;
+      const speed = 100;
+      const typedText = document.getElementById("typed-text");
+
+      function type() {
+        if (i < roles.length) {
+          if (!isDeleting && j <= roles[i].length) {
+            currentRole = roles[i].substring(0, j++);
+            typedText.textContent = currentRole;
+            setTimeout(type, speed);
+          } else if (isDeleting && j >= 0) {
+            currentRole = roles[i].substring(0, j--);
+            typedText.textContent = currentRole;
+            setTimeout(type, speed / 2);
+          } else if (!isDeleting) {
+            isDeleting = true;
+            setTimeout(type, 1000);
+          } else {
+            isDeleting = false;
+            i = (i + 1) % roles.length;
+            setTimeout(type, 500);
+          }
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", type);
+    </script>
+  </body>
+</html>
